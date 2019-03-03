@@ -12,7 +12,7 @@ def register(request):
     if 'user' in userObject:
         request.session['id'] = userObject['user'].id
         request.session['first_name'] = userObject['user'].first_name
-        return redirect(reverse('jobs'))
+        return redirect(reverse('jobs:index'))
     else:
         for error in userObject['errors']:
             messages.warning(request, error)
@@ -23,7 +23,7 @@ def login(request):
     if 'user' in userObject:
         request.session['id'] = userObject['user'].id
         request.session['first_name'] = userObject['user'].first_name
-        return redirect(reverse('jobs:jobs'))
+        return redirect(reverse('jobs:index'))
     else:
         for error in userObject['errors']:
             messages.warning(request, error)
@@ -31,3 +31,7 @@ def login(request):
 
 def success(request):
     return render(request, 'handy_helper/index.html')
+
+def logout(request):
+    request.session.clear()
+    return redirect(reverse('index'))

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    </head>
+
+    <body>
+        <div class='container-fluid'>
+            <div class='col-md-12'>
+                <a href="/logout">LOG ME OUTSIDE</a>
+                <a href="{% url 'jobs:index' %}">Job Dashboard</a>
+
+                <h1>{{job.title}}</h1>
+                
+                <div class='message_container'>
+                    <p>{{job.description}}<p>
+                    <br>
+                    <p>Location: {{job.location}}</p>
+                    <br>
+                    <p>Posted by: {{job.user.first_name}} {{job.user.last_name}}</p>
+                    <br>
+                    <p>Posted on: {{job.created_at}}</p>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
