@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    </head>
+
+    <body>
+        <div class='container-fluid'>
+            <a href="{% url 'jobs:jobs' %}">E.T. Phone Home</a>
+            
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Job</th>
+                        <th>Location</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for job in jobs %}
+                    <tr>
+                        <td>{{job.name}}</td>
+                        <td>{{job.location}}</td>
+                        <td>
+                            placeholder
+                            {% if boolean or user.id == request.session.id %}
+                            <!-- <a href="{% url 'edit_job' user_id=user.id %}">Edit</a>
+                            {% else %}
+                            No Permissions
+                            {% endif %}
+                            {% if boolean and not user.admin %}
+                            <a href="{% url 'handle_delete_user' user_id=user.id %}">Delete</a> -->
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% if boolean %}
+            <a href="{% url 'add_job' %}" type="submit" class="btn btn-default">Add a new job!</a>
+            {% endif %}
+        </div>
+    
+    </body>
+</html>
